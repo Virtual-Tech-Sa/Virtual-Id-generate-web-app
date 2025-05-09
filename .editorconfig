@@ -1,0 +1,10 @@
+[*.cs]
+
+# CS8613: Nullability of reference types in return type doesn't match implicitly implemented member.
+dotnet_diagnostic.CS8613.severity = silent
+
+# IDE0058: Expression value is never used
+csharp_style_unused_value_expression_statement_preference = unused_local_variable
+
+# CS8604: Possible null reference argument.
+dotnet_diagnostic.CS8604.severity = silent

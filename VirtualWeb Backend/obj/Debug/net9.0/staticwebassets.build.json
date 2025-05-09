@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "Hash": "82mCPChFWJSordTW+wmkWby9KBGS4MXoWuBXb5A1nNI=",
+  "Source": "VID",
+  "BasePath": "_content/VID",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "VID\\wwwroot",
+      "Source": "VID",
+      "ContentRoot": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\wwwroot\\",
+      "BasePath": "_content/VID",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\wwwroot\\ProfilePictures\\muntu.jpeg",
+      "SourceId": "VID",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\wwwroot\\",
+      "BasePath": "_content/VID",
+      "RelativePath": "ProfilePictures/muntu#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e8widhudsq",
+      "Integrity": "rqQQq0dyGKFPKoWsWfrmkVG9s/ukMmB19i7/VyBE92I=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfilePictures\\muntu.jpeg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "ProfilePictures/muntu.e8widhudsq.jpeg",
+      "AssetFile": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\wwwroot\\ProfilePictures\\muntu.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rqQQq0dyGKFPKoWsWfrmkVG9s/ukMmB19i7/VyBE92I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:33:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e8widhudsq"
+        },
+        {
+          "Name": "label",
+          "Value": "ProfilePictures/muntu.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rqQQq0dyGKFPKoWsWfrmkVG9s/ukMmB19i7/VyBE92I="
+        }
+      ]
+    },
+    {
+      "Route": "ProfilePictures/muntu.jpeg",
+      "AssetFile": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\wwwroot\\ProfilePictures\\muntu.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rqQQq0dyGKFPKoWsWfrmkVG9s/ukMmB19i7/VyBE92I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:33:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rqQQq0dyGKFPKoWsWfrmkVG9s/ukMmB19i7/VyBE92I="
+        }
+      ]
+    }
+  ]
+}
