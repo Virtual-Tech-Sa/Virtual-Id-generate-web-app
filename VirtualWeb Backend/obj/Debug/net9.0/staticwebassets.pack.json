@@ -1,7 +1,87 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\wwwroot\\ProfilePictures\\muntu.jpeg",
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\09fde85c-5409-4e6f-bd52-76f65323dca4.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\09fde85c-5409-4e6f-bd52-76f65323dca4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\0df93c72-743d-4c4b-a761-e5baed1843ce.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\0df93c72-743d-4c4b-a761-e5baed1843ce.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\157db514-02a4-4119-90e5-e50926e80598.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\157db514-02a4-4119-90e5-e50926e80598.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\2b48b737-7452-4fe1-905e-372be5ac523a.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\2b48b737-7452-4fe1-905e-372be5ac523a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\4a53021e-5fc7-45aa-8c0f-af3df831c59f.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\4a53021e-5fc7-45aa-8c0f-af3df831c59f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\4d1d541f-5c1d-48df-999f-500e034d0595.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\4d1d541f-5c1d-48df-999f-500e034d0595.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\4d516ab2-a81e-4896-b4c4-31e0d5ff90c1.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\4d516ab2-a81e-4896-b4c4-31e0d5ff90c1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\5569456b-df93-4031-b8b2-2115e8f88621.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\5569456b-df93-4031-b8b2-2115e8f88621.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\87158003-bbfe-4412-bba1-2a00b627b724.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\87158003-bbfe-4412-bba1-2a00b627b724.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\90028e8e-c02f-4148-aa8e-d3f205a26594.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\90028e8e-c02f-4148-aa8e-d3f205a26594.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\923dc911-2590-46e1-96dc-ab6b67973825.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\923dc911-2590-46e1-96dc-ab6b67973825.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\95ae3aa8-b863-416d-81cc-94d36c4784b2.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\95ae3aa8-b863-416d-81cc-94d36c4784b2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\e01140e8-1e01-416e-95f8-65a029b511d0.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\e01140e8-1e01-416e-95f8-65a029b511d0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\e598b98e-0a2d-4442-aa02-4451cee4214c.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\e598b98e-0a2d-4442-aa02-4451cee4214c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\ec08d728-4e8b-4964-9774-05b8a5e6574f.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\ec08d728-4e8b-4964-9774-05b8a5e6574f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\f0d75fae-2f7d-4cb8-82cc-ad73f7f6a6cb.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\f0d75fae-2f7d-4cb8-82cc-ad73f7f6a6cb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\f32ac3f5-01b5-4eb0-82ec-531338c39428.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\f32ac3f5-01b5-4eb0-82ec-531338c39428.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\fa8fca17-b5fa-4363-9392-cbf869993b2b.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\fa8fca17-b5fa-4363-9392-cbf869993b2b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\fa92783b-c877-4ef5-988c-031e20484c52.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\fa92783b-c877-4ef5-988c-031e20484c52.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\Data\\Photos\\fb3cb5ba-6172-43b5-934b-8f1d11eaac9f.jpg",
+      "PackagePath": "staticwebassets\\Data\\Photos\\fb3cb5ba-6172-43b5-934b-8f1d11eaac9f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\wwwroot\\ProfilePictures\\muntu.jpeg",
       "PackagePath": "staticwebassets\\ProfilePictures\\muntu.jpeg"
     },
     {

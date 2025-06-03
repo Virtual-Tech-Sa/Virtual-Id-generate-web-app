@@ -9,5 +9,6 @@ namespace VID.Repositories
         Task<T> CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(int id); // Changed from int to Guid for UUID
+        
     }
 }

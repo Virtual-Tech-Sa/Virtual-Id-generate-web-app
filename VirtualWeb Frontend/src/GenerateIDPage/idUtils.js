@@ -27,6 +27,13 @@ export const fetchLatestApplication = async () => {
 // Fetch profile picture for a specific application
 export const fetchProfilePicture = async (applicationId) => {
   try {
+
+    const localProfilePic = localStorage.getItem('profilePictureBase64');
+    
+    if (localProfilePic && localProfilePic.startsWith('data:image')) {
+      return localProfilePic;
+    }
+
     console.log(`Fetching profile picture for application ID: ${applicationId}`);
     
     const response = await fetch(`http://localhost:5265/api/Application/${applicationId}/profilepicture`);
@@ -74,13 +81,23 @@ const convertImageToBase64 = async (imgPath) => {
       ctx.drawImage(img, 0, 0);
       resolve(canvas.toDataURL('image/png'));
     };
-    img.onerror = () => {
-      console.error("Failed to load default profile image");
+    img.onerror = (err) => {
+      console.error("Failed to load image:", err);
       resolve(null);
     };
-    img.src = imgPath;
+
+    // Make sure it's a string (URL), not a module object
+    if (typeof imgPath === 'string') {
+      img.src = imgPath;
+    } else if (imgPath instanceof Blob || imgPath instanceof File) {
+      img.src = URL.createObjectURL(imgPath);
+    } else {
+      console.error("Invalid image path", imgPath);
+      resolve(null);
+    }
   });
 };
+
 
 // Function to load the SA coat of arms
 const loadCoatOfArms = async () => {

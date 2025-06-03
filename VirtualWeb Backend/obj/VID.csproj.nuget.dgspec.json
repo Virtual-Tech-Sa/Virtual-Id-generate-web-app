@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\VID.csproj": {}
+    "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\VID.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\VID.csproj": {
+    "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\VID.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\VID.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\VID.csproj",
         "projectName": "VID",
-        "projectPath": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\VID.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\VID.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Virtual Id\\Virtual-Id-Generate-webApp\\VirtualWeb Backend\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\Group H final project\\Virtual-Id-Generate-webApp\\Virtual-Id-generate-web-app\\VirtualWeb Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -86,6 +86,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[7.3.1, )"
+            },
+            "System.Linq.Expressions": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

@@ -31,6 +31,11 @@ namespace VID.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState); // This logs missing/malformed data
+                }
+                
                 if (string.IsNullOrEmpty(request.ToEmail))
                 {
                     return BadRequest("Email address is required");
