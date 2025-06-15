@@ -29,7 +29,7 @@ namespace VID.Controllers
         {
             try
             {
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=VID_FULLDATABASE;Username=postgres;Password=sifisom;"))
+                using (var connection = new NpgsqlConnection("Host=vid-fulldatabase.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
                 {
                     await connection.OpenAsync();
 
@@ -69,7 +69,7 @@ namespace VID.Controllers
         {
             try
             {
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=VID_FULLDATABASE;Username=postgres;Password=sifisom;"))
+                using (var connection = new NpgsqlConnection("Host=home-affairsdb.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
                 {
                     await connection.OpenAsync();
 
@@ -112,7 +112,7 @@ namespace VID.Controllers
         {
             try
             {
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=HomeAffairsDB;Username=postgres;Password=sifisom;"))
+                using (var connection = new NpgsqlConnection("Host=home-affairsdb.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
                 {
                     await connection.OpenAsync();
                     var query = @"
@@ -188,6 +188,29 @@ namespace VID.Controllers
             await _repository.DeleteAsync(id);
             return NoContent();
         }
+
+        [HttpGet("exists/email/{email}")]
+    public async Task<IActionResult> CheckIfEmailExists(string email)
+    {
+        try
+        {
+            using (var connection = new NpgsqlConnection("Host=vid-fulldatabase.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
+            {
+                await connection.OpenAsync();
+                var query = $"SELECT COUNT(*) FROM public.person WHERE \"Email\" = @Email";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    var count = (long)await command.ExecuteScalarAsync();
+                    return Ok(new { exists = count > 0 });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
         
         [HttpPost("upload-photo")]
         public async Task<IActionResult> UploadPhoto([FromForm] IFormFile photo)

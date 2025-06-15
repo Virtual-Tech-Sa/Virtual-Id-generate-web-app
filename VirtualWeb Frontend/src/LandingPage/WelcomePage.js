@@ -26,10 +26,10 @@ function WelcomePage() {
         </div>
         <div className={styles.navButtons}>
           <button 
-            className={styles.adminBtn}
+            className={styles.navBtn}
             onClick={() => setShowLoginModal(true)}
           >
-            Admin
+            Analytics
           </button>
           <Link to="/login"><button className={styles.navBtn}>Sign in</button></Link>
           <Link to="/register"><button className={styles.navBtnPrimary}>Register</button></Link>
@@ -76,7 +76,7 @@ function WelcomePage() {
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerLeft}>
-          <img src={LogoLanding} alt="Logo" className={styles.footerLogo} />
+          
           <p>Empowering secure digital identity for all.</p>
         </div>
         <div className={styles.footerRight}>
@@ -93,9 +93,8 @@ function WelcomePage() {
           </div>
           <div>
             <h4>Connect</h4>
-            <p>Twitter</p>
-            <p>LinkedIn</p>
-            <p>Facebook</p>
+            <p><a href="https://github.com/Virtual-Tech-Sa/virtual_back" target="_blank">Github</a></p>
+            <p><a href="https://www.linkedin.com/in/sifiso-mazibuko-695b30311/" target="_blank">LinkedIn</a></p>
           </div>
         </div>
       </footer>

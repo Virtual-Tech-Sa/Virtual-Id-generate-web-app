@@ -18,6 +18,7 @@ function Register() {
 
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
@@ -27,6 +28,11 @@ function Register() {
   const validatePassword = (password) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return regex.test(password);
+  };
+
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
   };
 
   const handleChange = async (e) => {
@@ -45,6 +51,30 @@ function Register() {
         setPasswordError('');
       }
     }
+
+    if (name === 'Email') {
+      if (value && !validateEmail(value)) {
+        setEmailError('Please enter a valid email address (e.g., example@domain.com).');
+      } else {
+        setEmailError('');
+      }
+    }
+    if (name === 'Email') {
+  if (value && !validateEmail(value)) {
+    setEmailError('...');
+  } else {
+    setEmailError('');
+    // Real-time check
+    try {
+      const res = await axios.get(`http://localhost:5265/api/Person/exists/email/${value}`);
+      if (res.data.exists) {
+        setEmailError('This email is already taken.');
+      }
+    } catch (err) {
+      setEmailError('');
+    }
+  }
+}
 
     setFormData({
       ...formData,
@@ -106,8 +136,38 @@ function Register() {
       return;
     }
 
+    if (!validateEmail(formData.Email)) {
+      const msg = 'Please enter a valid email address.';
+      setMessage(msg);
+      alert(msg);
+      return;
+    }
+
+    try {
+      const emailExistsRes = await axios.get(`http://localhost:5265/api/Person/exists/email/${formData.Email}`);
+      if (emailExistsRes.data.exists) {
+        const msg = 'An account with this email already exists.';
+        setMessage(msg);
+        alert(msg);
+        setIsLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.error('Error checking email:', error);
+      alert('Could not verify email at this time.');
+      setIsLoading(false);
+      return;
+    }
+
     if (formData.UserPassword !== confirmPassword) {
       const msg = 'Passwords do not match.';
+      setMessage(msg);
+      alert(msg);
+      return;
+    }
+
+    if (!validatePassword(formData.UserPassword)) {
+      const msg = 'Password does not meet the required criteria.';
       setMessage(msg);
       alert(msg);
       return;
@@ -174,6 +234,16 @@ function Register() {
   const getMessageStyle = () => {
     if (!message) return '';
     return message.toLowerCase().includes('success') ? styles.successMessage : styles.errorMessage;
+  };
+
+  const canProceedToNextStep = () => {
+    if (step === 1) {
+      return isIdValid && !userExists;
+    }
+    if (step === 2) {
+      return formData.Email && !emailError;
+    }
+    return true;
   };
 
   return (
@@ -246,7 +316,6 @@ function Register() {
               />
             </div>
 
-
               <div className={styles.inputGroup}>
                 <label htmlFor="Email">Email</label>
                 <input
@@ -257,6 +326,7 @@ function Register() {
                   onChange={handleChange}
                   required
                 />
+                {emailError && <p className={styles.errorText}>{emailError}</p>}
               </div>
             </>
           )}
@@ -328,6 +398,17 @@ function Register() {
                     alert('An account with this ID number already exists.');
                     return;
                   }
+                  
+                  // Don't allow proceeding if current step validation fails
+                  if (!canProceedToNextStep()) {
+                    if (step === 1) {
+                      alert('Please enter a valid ID found in the system.');
+                    } else if (step === 2) {
+                      alert('Please enter a valid email address.');
+                    }
+                    return;
+                  }
+                  
                   setStep(step + 1);
                   setMessage('');
                 }}
@@ -353,7 +434,7 @@ function Register() {
               <button
                 className={styles.registerButton}
                 type="submit"
-                disabled={isLoading || !isIdValid || userExists}
+                disabled={isLoading || !isIdValid || userExists || emailError || passwordError}
               >
                 {isLoading ? 'Registering...' : 'Register'}
               </button>
@@ -363,6 +444,11 @@ function Register() {
           <div className={styles.backButtons}>
             <Link to="/login" className={styles['back-login']}>
               Back to login
+            </Link>
+          </div>
+          <div className={styles.backButtons}>
+            <Link to="/" className={styles['back-login']}>
+              Back to Home?
             </Link>
           </div>
         </form>

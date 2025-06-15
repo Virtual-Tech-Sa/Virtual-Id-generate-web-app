@@ -56,7 +56,7 @@ export const authService = {
         const response = await axios.post(API_URL + 'auth/forgot-password', { email });
         return response.data;
       } catch (error) {
-        throw error("Under forgot password");
+        throw error.response.data ? error : new Error('Invalid or expired Email');
       }
     },
 
@@ -115,7 +115,8 @@ export const authService = {
         });
         return response.data;
       } catch (error) {
-        throw error.response.data;
+        //throw error.response.data;
+         throw error.response.data ? error : new Error('Invalid or expired Email');
       }
     },
 

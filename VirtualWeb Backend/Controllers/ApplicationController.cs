@@ -35,7 +35,7 @@ namespace VID.Controllers
 
             try
             {
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=HomeAffairsDB;Username=postgres;Password=sifisom;"))
+                using (var connection = new NpgsqlConnection("Host=home-affairsdb.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
                 {
                     Console.WriteLine("Opening database connection...");
                     await connection.OpenAsync();
@@ -75,7 +75,52 @@ namespace VID.Controllers
             }
         }
 
-            
+            [HttpGet("child/{childIdentityNumber}/photo")]
+    public async Task<IActionResult> GetChildPhoto(string childIdentityNumber)
+    {
+        if (string.IsNullOrEmpty(childIdentityNumber))
+        {
+            return BadRequest(new { error = "Child Identity Number is required." });
+        }
+
+        try
+        {
+            using (var connection = new NpgsqlConnection("Host=home-affairsdb.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
+            {
+                await connection.OpenAsync();
+
+                var query = @"
+                    SELECT ""childPhoto""
+                    FROM public.""ChildDetails""
+                    WHERE ""childIdentityNumber"" = @ChildIdentityNumber";
+
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ChildIdentityNumber", childIdentityNumber);
+
+                    var result = await command.ExecuteScalarAsync();
+
+                    if (result == null || result == DBNull.Value)
+                    {
+                        // Return default image if no photo found
+                        var defaultImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ProfilePictures", "muntu.jpg");
+                        var defaultImageBytes = await System.IO.File.ReadAllBytesAsync(defaultImagePath);
+                        return File(defaultImageBytes, "image/jpeg");
+                    }
+
+                    var photoBytes = (byte[])result;
+
+                    
+                    return File(photoBytes, "image/jpeg");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error retrieving child photo: {ex.Message}");
+            return StatusCode(500, new { error = "Internal server error." });
+        }
+    }
         
     
             [HttpPost("SubmitAll")]
@@ -112,7 +157,7 @@ namespace VID.Controllers
         {
             try
             {
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=HomeAffairsDB;Username=postgres;Password=sifisom;"))
+                using (var connection = new NpgsqlConnection("Host=home-affairsdb.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
                 {
                     await connection.OpenAsync();
                     var query = @"
@@ -158,6 +203,38 @@ namespace VID.Controllers
             return Ok(children);
         }
 
+        [HttpGet("email/{email}")]
+    public async Task<IActionResult> GetApplicationByEmail(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            return BadRequest(new { error = "Email address is required." });
+        }
+
+        try
+        {
+            // Fetch all applications from the repository
+            var allApplications = await _repository.GetAllAsync();
+
+            // Find the first application that matches the email
+            var application = allApplications.FirstOrDefault(a => a.Email == email);
+
+            if (application == null)
+            {
+                return NotFound(new { error = $"No application found for email '{email}'." });
+            }
+
+            return Ok(application);
+        }
+        catch (Exception ex)
+        {
+            // Log the exception here (you can use ILogger in production)
+            Console.WriteLine($"Error fetching application by email: {ex.Message}");
+            return StatusCode(500, new { error = "An internal server error occurred." });
+        }
+    }
+
+
         // [HttpGet("{applicationId}/profilepicture")]
         // public IActionResult GetProfilePicture(int applicationId)
         // {
@@ -183,7 +260,7 @@ namespace VID.Controllers
         //     return File(imageFileStream, "image/jpeg");
         // }
 
-        [HttpGet("{id}/profilepicture")]
+        //[HttpGet("{id}/profilepicture")]
         // public async Task<IActionResult> GetProfilePicture(int id)
         // {
         //     // try
@@ -208,6 +285,52 @@ namespace VID.Controllers
 
         //     return StatusCode(500, "An error occurred while retrieving the profile picture");
         // }
+
+
+        [HttpGet("person/{personId}/profilepicture")]
+public async Task<IActionResult> GetProfilePictureByPersonId(string personId)
+{
+    if (string.IsNullOrEmpty(personId))
+    {
+        return BadRequest(new { error = "Person ID is required." });
+    }
+
+    try
+    {
+        // Fetch the application by PersonId using your repository
+        var allApplications = await _repository.GetAllAsync();
+        var application = allApplications.FirstOrDefault(a => a.PersonId == personId);
+
+        if (application == null)
+        {
+            return NotFound(new { error = "No application found for the given Person ID." });
+        }
+
+        // Assuming ProfilePicture is a byte[] field in your Application model
+        if (application.ProfilePicture == null || application.ProfilePicture.Length == 0)
+        {
+            // Serve default image if no profile picture exists
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ProfilePictures");
+            var defaultImagePath = Path.Combine(folderPath, "muntu.jpeg");
+
+            if (!System.IO.File.Exists(defaultImagePath))
+            {
+                return NotFound(new { error = "Default profile picture not found." });
+            }
+
+            var defaultImageBytes = await System.IO.File.ReadAllBytesAsync(defaultImagePath);
+            return File(defaultImageBytes, "image/jpeg");
+        }
+
+        // Return the user's profile picture
+        return File(application.ProfilePicture, "image/jpeg"); // Adjust MIME type if needed
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine($"Error retrieving profile picture for PersonId {personId}: {ex.Message}");
+        return StatusCode(500, new { error = "An error occurred while retrieving the profile picture." });
+    }
+}
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Application>> GetById(int id)
@@ -316,11 +439,12 @@ namespace VID.Controllers
         }
 
         
+        
 
 // Alternative model with PascalCase (if your API uses PascalCase)
 
 
-// Updated Controller Method with better error handling
+        // Updated Controller Method with better error handling
         [HttpPost("update-photo")]
         public async Task<IActionResult> UpdateChildPhoto([FromBody] ChildPhotoUpdateModel model)
         {
@@ -363,7 +487,7 @@ namespace VID.Controllers
                 byte[] photoBytes = await System.IO.File.ReadAllBytesAsync(fullPath);
                 Console.WriteLine($"Read {photoBytes.Length} bytes from file");
 
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=HomeAffairsDB;Username=postgres;Password=sifisom;"))
+                using (var connection = new NpgsqlConnection("Host=home-affairsdb.crq2q6u64pfx.eu-north-1.rds.amazonaws.com;Port=5432;Database=postgres;Username=postgres;Password=Moment2Sifiso#;"))
                 {
                     await connection.OpenAsync();
 

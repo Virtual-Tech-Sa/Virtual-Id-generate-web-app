@@ -89,7 +89,7 @@ const ProcessingPage = () => {
       {
         toEmail: applicantData.Email,
         subject: "Your ID is Ready",
-        body: `Dear ${applicantData.FullName || "Applicant"},\n\n your id is ready for generation. You can now proceed to generate your ID by visiting the following link: \n\n http://localhost:3000/generate_id \n\nThank you for using our service!`,
+        body: `Dear ${applicantData.FullName || "Applicant"},\n\n your id is ready for generation. You can now proceed to generate your ID by logging in the system : \n\n \n\nThank you for using our service!`,
       },
       {
         headers: {

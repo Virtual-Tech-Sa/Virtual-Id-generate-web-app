@@ -87,6 +87,10 @@
               "target": "Package",
               "version": "[7.3.1, )"
             },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "System.Linq.Expressions": {
               "target": "Package",
               "version": "[4.3.0, )"

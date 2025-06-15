@@ -84,6 +84,11 @@ const Login = () =>{
             Forgot Password?
           </Link>
         </div>
+        <div>
+          <Link to="/" className={styles['forgot-gotoregister']}>
+            Home?
+          </Link>
+        </div>
       </div>     
         </form>
     </div>

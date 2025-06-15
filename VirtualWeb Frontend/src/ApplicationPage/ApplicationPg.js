@@ -179,14 +179,14 @@ const updateChildPhoto = async () => {
 
     console.log('Sending data to backend:', updateData);
 
-    const response = await axios.post('http://localhost:5265/api/application/update-photo', updateData, {
+    const response = await axios.post('http://localhost:5265/api/Application/update-photo', updateData, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
     
     console.log('Backend response:', response.data);
-    alert('Photo uploaded to database successfully!');
+    //alert('Photo uploaded to database successfully!');
   } catch (error) {
     console.error('Full error object:', error);
     console.error('Error response data:', error.response?.data);
@@ -298,14 +298,14 @@ const updateChildPhotoAlt = async () => {
               if (exists) {
                 setErrors(prev => ({
                   ...prev,
-                  PersonId: "An application with this ID already exists"
+                  PersonId: "An application with this ID already exists, go to your nearest home affairs office to enquire."
                 }));
               }
             });
             
             // Fetch parent information if ID exists
             if (userData.PersonId.length === 13) {
-              fetchParentInfo(userData.PersonId);
+              fetchParentInfo(userData.PersonId); 
             }
           }
         } catch (error) {
@@ -950,7 +950,7 @@ const updateChildPhotoAlt = async () => {
             {/* Additional Information Section */}
             <div className={styles.sectionHeader}>Additional Information</div>
             
-            <div className={styles.formGroup}>
+            {/* <div className={styles.formGroup}>
               <label htmlFor="disabilities">Disabilities (if any)</label>
               <input
                 id="disabilities"
@@ -959,7 +959,7 @@ const updateChildPhotoAlt = async () => {
                 value={formData.disabilities || ''}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
 
            {/* <div className={styles.container}> */}
               {/* <div className={styles.card}> */}
@@ -1012,7 +1012,7 @@ const updateChildPhotoAlt = async () => {
             {/* </div> */}
 
              <div className={styles.formGroup}>
-                <label htmlFor="profilePhotoPath">Profile Photo Path</label>
+                <label htmlFor="profilePhotoPath">Upload new picture/Skip if you wish to use an old photo</label>
                 {/* <input
                   id="profilePhotoPath" // you need to work on this
                   type="text"

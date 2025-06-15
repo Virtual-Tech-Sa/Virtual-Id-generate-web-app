@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ApplicantDashbd.module.css";
+import { useNavigate } from 'react-router-dom'; // <-- ADDED
 
 const ApplicantDashbd = () => {
+  const navigate = useNavigate(); // <-- ADDED
   const [profile, setProfile] = useState({
     personId: 0,
     identityId: "",
@@ -31,11 +33,8 @@ const ApplicantDashbd = () => {
         setMessage({ text: "User ID not found. Please log in again.", type: "error" });
         return;
       }
-
       const response = await fetch(`http://localhost:5265/api/Person/${userId}`);
-
       if (!response.ok) throw new Error("Failed to fetch profile");
-
       const data = await response.json();
       setProfile(data);
       setOriginalProfile(JSON.parse(JSON.stringify(data)));
@@ -50,7 +49,6 @@ const ApplicantDashbd = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfile(prev => ({ ...prev, [name]: value }));
-
     if (formErrors[name]) {
       setFormErrors(prev => ({ ...prev, [name]: null }));
     }
@@ -62,7 +60,6 @@ const ApplicantDashbd = () => {
     if (!profile.surname?.trim()) errors.surname = "Last name is required";
     if (profile.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email))
       errors.email = "Please enter a valid email address";
-
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -72,49 +69,33 @@ const ApplicantDashbd = () => {
       setMessage({ text: "Please correct the errors before saving", type: "error" });
       return;
     }
-
     try {
       setLoading(true);
-
-      // Create a clean copy of the profile for update
       const updatedProfile = {
         ...profile,
-        // Ensure identityId is preserved even if it's not displayed
         identityId: profile.identityId || originalProfile.identityId,
-        // Ensure proper date format for C# DateOnly type
         dateOfBirth: profile.dateOfBirth ? profile.dateOfBirth.split('T')[0] : null,
-        // Add dateOfBirthString for alternate model
         dateOfBirthString: profile.dateOfBirth ? profile.dateOfBirth.split('T')[0] : null,
-        // Preserve other fields that might not be directly edited
         userPassword: originalProfile.userPassword,
         passwordResetToken: originalProfile.passwordResetToken,
         resetTokenExpires: originalProfile.resetTokenExpires,
       };
-
-      console.log("Sending to API:", updatedProfile);
-
       const response = await fetch(`http://localhost:5265/api/Person/${profile.personId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedProfile)
       });
-
       if (!response.ok) {
         let errorMessage = "Failed to update profile";
         try {
           const errorData = await response.json();
           errorMessage = errorData.message || errorData.title || JSON.stringify(errorData);
-        } catch (e) {
-          // If JSON parsing fails, use status text
-          errorMessage = `Error (${response.status}): ${response.statusText}`;
-        }
+        } catch {}
         throw new Error(errorMessage);
       }
-
       setOriginalProfile(JSON.parse(JSON.stringify(updatedProfile)));
       setEditing(false);
       setMessage({ text: "Profile updated successfully", type: "success" });
-
       setTimeout(() => setMessage({ text: "", type: "" }), 3000);
     } catch (err) {
       console.error(err);
@@ -132,28 +113,21 @@ const ApplicantDashbd = () => {
     setEditing(false);
   };
 
-  // New function to handle profile deletion
   const deleteProfile = async () => {
     try {
       setLoading(true);
       const response = await fetch(`http://localhost:5265/api/Person/${profile.personId}`, {
         method: 'DELETE',
       });
-
       if (!response.ok) {
         throw new Error(`Error (${response.status}): ${response.statusText}`);
       }
-
-      // Clear localStorage and redirect to login page
       localStorage.removeItem("userId");
-      setMessage({ text: "Profile deleted successfully. Redirecting to login...", type: "success" });
-      
-      // Give user time to see the success message before redirecting
+      setMessage({ text: "Profile deleted successfully. Redirecting...", type: "success" });
       setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
     } catch (err) {
-      console.error(err);
       setMessage({ text: `Error deleting profile: ${err.message}`, type: "error" });
       setShowDeleteConfirmation(false);
       setLoading(false);
@@ -171,6 +145,15 @@ const ApplicantDashbd = () => {
 
   return (
     <div className={styles.dashboardContainer}>
+      {/* 🔥 Back to Dashboard Button */}
+      <button
+        className={`${styles.button} ${styles.editButton}`}
+        onClick={() => navigate('/my_register')}
+      >
+        ← Back to Dashboard
+      </button>
+
+      {/* Original Content Below */}
       <h2 className={styles.title}>Applicant Dashboard</h2>
 
       {message.text && (
@@ -208,14 +191,14 @@ const ApplicantDashbd = () => {
         <div className={styles.profileSection}>
           <div className={styles.statusBox}>
             <h3>Visual ID Status</h3>
-            <div className={styles.statusIndicator}>
-              {status || "Not Generated"}
-            </div>
+            
           </div>
         </div>
 
         <div className={styles.detailsSection}>
           <h3>Personal Information</h3>
+
+          {/* Form fields here */}
 
           {[
             { label: "First Name", name: "firstname", required: true },

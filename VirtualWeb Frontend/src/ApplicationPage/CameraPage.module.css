@@ -47,6 +47,23 @@
   box-shadow: 0 12px 24px rgba(42, 157, 143, 0.3);
 }
 
+.verificationResult {
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.verificationResult.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.verificationResult.failure {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
 .cameraControls {
   display: flex;
   justify-content: center;
